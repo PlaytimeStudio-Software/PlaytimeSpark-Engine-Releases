@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spark Guides</title>
+<meta name="description" content="Guides for Spark, Playtime Studio's game engine.">
+<link rel="icon" href="icon.png">
+<style>
+:root {
+	--bg: #1f1915;
+	--panel: #2b211b;
+	--panel-2: #3b2e25;
+	--line: #5a4535;
+	--text: #f3ead9;
+	--muted: #c9b9a3;
+	--gold: #f4c230;
+	--gold-dark: #c99a1e;
+	--code-bg: #16110e;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 16px; }
+body {
+	margin: 0;
+	background: var(--bg);
+	color: var(--text);
+	font: 16px/1.6 "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+a { color: var(--gold); }
+a:hover { color: #ffd65e; }
+.layout { display: flex; min-height: 100vh; }
+nav {
+	position: sticky; top: 0; align-self: flex-start;
+	width: 250px; height: 100vh; overflow-y: auto; flex-shrink: 0;
+	background: var(--panel); border-right: 1px solid var(--line);
+	padding: 24px 18px;
+}
+nav .brand { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; text-decoration: none; }
+nav .brand img { width: 40px; height: 40px; }
+nav .brand span { color: var(--text); font-weight: 700; font-size: 18px; line-height: 1.2; }
+nav .brand small { display: block; color: var(--muted); font-weight: 400; font-size: 12px; }
+nav ul { list-style: none; margin: 0; padding: 0; }
+nav li a { display: block; padding: 6px 10px; border-radius: 8px; color: var(--muted); text-decoration: none; font-size: 15px; }
+nav li a:hover { background: var(--panel-2); color: var(--text); }
+main { flex: 1; min-width: 0; padding: 40px 48px 80px; max-width: 900px; }
+header.hero { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; margin-bottom: 28px; }
+header.hero img { width: 300px; max-width: 100%; height: auto; }
+header.hero p { margin: 0; color: var(--muted); max-width: 440px; }
+h2 { color: var(--gold); font-size: 26px; margin: 48px 0 12px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+h3 { font-size: 19px; margin: 26px 0 8px; }
+code { background: var(--code-bg); border: 1px solid var(--line); border-radius: 5px; padding: 1px 6px; font-size: 14px; overflow-wrap: anywhere; }
+pre { background: var(--code-bg); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; overflow-x: auto; }
+pre code { border: 0; padding: 0; background: none; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
+.note { border-left: 4px solid var(--gold); }
+table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 15px; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { color: var(--gold); font-weight: 600; }
+.table-wrap { overflow-x: auto; }
+kbd { background: var(--panel-2); border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; font-size: 14px; }
+footer { margin-top: 64px; color: var(--muted); font-size: 14px; }
+@media (max-width: 800px) {
+	.layout { display: block; }
+	nav { position: static; width: auto; height: auto; border-right: 0; border-bottom: 1px solid var(--line); padding: 16px; }
+	nav ul { display: flex; flex-wrap: wrap; gap: 4px; }
+	main { padding: 24px 16px 60px; }
+}
+</style>
+</head>
+<body>
+<div class="layout">
+<nav>
+	<a class="brand" href="#top"><img src="icon.png" alt=""><span>Spark Guides<small>by Playtime Studio</small></span></a>
+	<ul>
+		<li><a href="#install">Install Spark</a></li>
+		<li><a href="#projects">Start a project</a></li>
+		<li><a href="#toolkit">Playtime Toolkit</a></li>
+		<li><a href="#templates">Export templates</a></li>
+		<li><a href="#windows">Windows games</a></li>
+		<li><a href="#android">Android games</a></li>
+		<li><a href="#web">Web games</a></li>
+		<li><a href="#apple">macOS &amp; iOS</a></li>
+		<li><a href="#csharp">C#</a></li>
+		<li><a href="#updates">Updates &amp; versions</a></li>
+		<li><a href="#signing">Code signing</a></li>
+		<li><a href="#learn">Learning the engine</a></li>
+	</ul>
+</nav>
+<main id="top">
+<header class="hero">
+	<img src="logo.png" alt="Spark by Playtime Studio">
+	<p>Spark is Playtime Studio's game engine for 2D, 3D and mobile games. These guides cover installing Spark, starting projects and exporting games.</p>
+</header>
+
+<h2 id="install">Install Spark</h2>
+<p>Installers are on the <a href="https://github.com/PlaytimeStudio-Software/Spark-Engine/releases">Spark-Engine releases page</a> (sign in to GitHub with your Playtime Studio account). There are two editions; you can install both side by side.</p>
+<div class="table-wrap"><table>
+	<tr><th>Installer</th><th>Use it for</th></tr>
+	<tr><td><code>Spark-&lt;version&gt;-setup-x86_64.exe</code></td><td>GDScript games. Smaller, nothing else to install, and the only edition that exports to the Web.</td></tr>
+	<tr><td><code>Spark-CSharp-&lt;version&gt;-setup-x86_64.exe</code></td><td>Games scripted in C# (GDScript works too). Needs the <a href="https://dotnet.microsoft.com/download">.NET SDK 9 or newer</a> for C#.</td></tr>
+</table></div>
+<p>Running a newer installer of the same edition updates Spark in place; projects and settings are kept.</p>
+
+<h2 id="projects">Start a project</h2>
+<p>In the Project Manager click <b>Create</b>, name the project and pick a template:</p>
+<div class="table-wrap"><table>
+	<tr><th>Template</th><th>What you get</th></tr>
+	<tr><td>Blank</td><td>An empty project with the Playtime Toolkit and theme.</td></tr>
+	<tr><td>2D Platformer</td><td>A character that runs and jumps on platforms.</td></tr>
+	<tr><td>Top-down 2D</td><td>A character that moves in eight directions, walls and coins to collect.</td></tr>
+	<tr><td>Puzzle</td><td>A match-3 board: swap neighbouring tiles to clear rows of three or more.</td></tr>
+	<tr><td>Menu &amp; UI</td><td>Title screen, settings, pause menu and a level-complete screen, wired together.</td></tr>
+	<tr><td>3D Game</td><td>A character that walks and jumps in a 3D level.</td></tr>
+	<tr><td>Racing 3D</td><td>A drivable car on an oval track with a chase camera.</td></tr>
+	<tr><td>Mobile Game</td><td>A touch-controlled starting point set up for phones.</td></tr>
+</table></div>
+<p>Every new project gets the Playtime splash screen, the Spark icon, Windows and Android export presets, and the Playtime Toolkit.</p>
+
+<h2 id="toolkit">Playtime Toolkit</h2>
+<p>The toolkit lives in <code>addons/playtime_toolkit</code> in every new project. Remove the folder and disable the plugin in <b>Project &gt; Project Settings &gt; Plugins</b> if a game doesn't need it.</p>
+<div class="table-wrap"><table>
+	<tr><th>Autoload</th><th>Use</th></tr>
+	<tr><td><code>SaveSystem</code></td><td><code>SaveSystem.save_game({"level": 3}, slot)</code>, <code>load_game(slot)</code>, <code>has_save(slot)</code>, <code>delete_save(slot)</code>.</td></tr>
+	<tr><td><code>AudioManager</code></td><td><code>play_music(stream, fade_time)</code>, <code>stop_music()</code>, <code>play_sfx(stream, volume_db, pitch_variation)</code> on the Music and SFX buses.</td></tr>
+	<tr><td><code>Settings</code></td><td>Master, music and effects volume, fullscreen and vsync; saved and restored automatically.</td></tr>
+	<tr><td><code>SceneManager</code></td><td><code>SceneManager.change_scene("res://level_2.tscn")</code> with a fade, <code>reload_scene()</code>.</td></tr>
+</table></div>
+<p>Add <code>addons/playtime_toolkit/pause_menu.tscn</code> to a level for a pause menu on <kbd>Esc</kbd> with Resume, Settings and Quit. The Playtime UI theme is the project's default theme, so buttons, panels and sliders use Playtime's colours; use the <code>HeaderLarge</code> and <code>HeaderMedium</code> label variations for titles.</p>
+
+<h2 id="templates">Export templates</h2>
+<p>Export templates are the pre-built engine that runs your exported game. Install them once per Spark version: <b>Editor &gt; Manage Export Templates &gt; Install All Templates</b>. Spark downloads its own templates; the C# edition downloads the C# templates automatically.</p>
+<p>Spark's templates cover Windows (64-bit, 32-bit, ARM), Android, Web, and macOS and iOS once they've been built on a Mac.</p>
+
+<h2 id="windows">Windows games</h2>
+<p>New projects have a <b>Windows Desktop</b> export preset. <b>Project &gt; Export</b>, pick it and click <b>Export Project</b>. The game is a single <code>.exe</code> with the data embedded.</p>
+<ul>
+	<li><b>Architecture</b>: x86_64 for most PCs, arm64 for Snapdragon laptops, x86_32 for old 32-bit Windows.</li>
+	<li><b>Graphics</b>: games use Vulkan and switch to DirectX 12 automatically on PCs where Vulkan doesn't work.</li>
+</ul>
+
+<h2 id="android">Android games</h2>
+<div class="card note">One-time setup per PC: install <a href="https://developer.android.com/studio">Android Studio</a>, then in Spark set <b>Editor Settings &gt; Export &gt; Android &gt; Java SDK Path</b> (usually <code>C:\Program Files\Android\Android Studio\jbr</code>) and <b>Android SDK Path</b> (usually <code>C:\Users\&lt;you&gt;\AppData\Local\Android\Sdk</code>).</div>
+<ul>
+	<li><b>Test on a phone</b>: enable USB debugging on the phone, connect it, and click the Android icon in Spark's toolbar.</li>
+	<li><b>APK</b>: <b>Project &gt; Export</b>, Android preset, <b>Export Project</b>.</li>
+	<li><b>Google Play</b>: turn on <b>Use Gradle Build</b>, set the export format to AAB and use a release keystore. Full steps are in <code>docs/android-export.md</code> in the Spark-Engine repository.</li>
+	<li><b>2D Only</b>: for games without 3D, tick <b>Custom Template &gt; 2D Only</b> for a smaller app (applies when Gradle build is off).</li>
+</ul>
+
+<h2 id="web">Web games</h2>
+<p>Use the regular Spark edition (C# games can't export to the Web). Add a <b>Web</b> export preset in <b>Project &gt; Export</b>.</p>
+<ul>
+	<li><b>Thread Support</b>: leave it off for sites like itch.io; it needs special server headers when on.</li>
+	<li><b>2D Only</b>: for games without 3D, tick <b>Variant &gt; 2D Only</b> for a smaller download that starts faster.</li>
+</ul>
+
+<h2 id="apple">macOS &amp; iOS</h2>
+<p>Apple's tools only run on a Mac, so the macOS and iOS templates are built there with a script in the Spark-Engine repository:</p>
+<pre><code>misc/scripts/build_apple_templates.sh ~/Downloads/Spark_v&lt;version&gt;.stable_export_templates.tpz</code></pre>
+<p>It adds <code>macos.zip</code> and <code>ios.zip</code> to the template file, which is then uploaded to its release. iOS exports produce an Xcode project that is finished on the Mac. Publishing on the App Store, or notarizing macOS games, needs an Apple Developer account.</p>
+
+<h2 id="csharp">C#</h2>
+<ol>
+	<li>Install the .NET SDK 9 or newer and the Spark (C#) edition.</li>
+	<li>Attach a script and choose <b>C#</b>. Spark creates the <code>.csproj</code> and <code>.sln</code> files.</li>
+	<li>Build with the hammer button, or just run the game.</li>
+</ol>
+<p>Spark's C# packages (<code>Spark.NET.Sdk</code>) are installed with Spark (C#) and registered on the PC automatically, so they don't come from the internet. Older projects that use <code>Godot.NET.Sdk</code> switch to <code>Spark.NET.Sdk</code> when opened. Without the .NET SDK, Spark (C#) still opens GDScript projects and shows a warning.</p>
+
+<h2 id="updates">Updates &amp; versions</h2>
+<p>The Project Manager shows <b>“Spark x.y is available”</b> when a newer version is released; click it to open the release page.</p>
+<p>Spark has its own version numbers (1.4, 1.5, …). Projects record the Spark version that last saved them, shown in the Project Manager; projects that were never opened in Spark show their Godot version there. Opening a project in a newer Spark updates it.</p>
+<p>Inside, Spark keeps a hidden compatibility level with the Godot version it's based on, so Godot projects, add-ons and tutorials keep working.</p>
+
+<h2 id="signing">Code signing</h2>
+<p>Unsigned installers and games make Windows show “Unknown publisher”. With a code-signing certificate in Playtime Studio's name:</p>
+<ul>
+	<li><b>Spark installers</b>: add the <code>WINDOWS_CERT_PFX</code> (Base64 of the <code>.pfx</code>) and <code>WINDOWS_CERT_PASSWORD</code> secrets to the Spark-Engine repository; the installer workflow then signs everything.</li>
+	<li><b>Games</b>: set <b>Editor Settings &gt; Export &gt; Windows &gt; Signtool</b>, then enable <b>Codesign</b> in the Windows export preset with the <code>.pfx</code> and its password.</li>
+</ul>
+
+<h2 id="learn">Learning the engine</h2>
+<p>Spark is based on the Godot Engine and keeps its project formats, nodes and scripting, so <a href="https://docs.godotengine.org/en/4.7/">Godot's documentation</a>, tutorials and add-ons apply to Spark. Inside Spark, press <kbd>F1</kbd> to search the built-in class reference.</p>
+
+<footer>Spark by <a href="https://playtime.studio">Playtime Studio</a>. Spark is based on the Godot Engine (MIT license); “Godot” is a trademark of the Godot Foundation.</footer>
+</main>
+</div>
+</body>
+</html>
